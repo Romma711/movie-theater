@@ -25,8 +25,36 @@ func (db *StoreDB) GetMovies() ([]Movie, error) {
 	return movies, nil
 }
 
+func (db *StoreDB) GetMovieById (id int) (Movie ,error){
+	row, err := db.db.Query("SELECT * FROM movies WHERE id = ?", id)
+	if err != nil {
+		return Movie{}, err
+	}
+	movie, err := scanMovieRows(row)
+	if err != nil{
+		return Movie{}, err
+	}
+	return movie[0], nil
+}
+
 func (db *StoreDB) InsertMovie (movie Movie) error {
 	_, err := db.db.Exec("INSERT INTO movies (title, year, genre, rating, poster_url, plot, relase_date, status, ticket_price) VALUES (?,?,?,?,?,?,?,?,?)", movie.Title, movie.Year, movie.Genre, movie.Rating, movie.PosterURL, movie.Plot, movie.RelaseDate, movie.Status, movie.TicketPrice)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (db *StoreDB) UpdateMovie (movie Movie) error {
+	_, err := db.db.Exec("UPDATE movies SET title=?, year=?, genre=?, rating=?, poster_url=?, plot=?, relase_date=?, status=?, ticket_price=? WHERE id=?", movie.Title, movie.Year, movie.Genre, movie.Rating, movie.PosterURL, movie.Plot, movie.RelaseDate, movie.Status, movie.TicketPrice, movie.ID)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (db *StoreDB) DeleteMovie (id int) error{
+	_, err := db.db.Exec("DELETE FROM movies WHERE id = ?", id)
 	if err != nil {
 		return err
 	}
