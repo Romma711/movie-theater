@@ -1,0 +1,10 @@
+go 1.23.6
+
+use (
+	./api-gateway
+	./movie-board
+	./movie-theaters
+	./payment
+	./seats
+	./tickets
+)
