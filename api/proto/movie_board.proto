@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package movie_board;
+
+option go_package ="github.com/Romma711/movie_board/api/proto/movie_board";
+
+service MovieBoardService {
+    rpc GetMovies(GetMoviesRequest) returns (GetMoviesResponse);
+    rpc GetMovieById(GetMovieByIdRequest) returns (GetMovieByIdResponse);
+    rpc InsertMovie(InsertMovieRequest) returns (InsertMovieResponse);
+    rpc UpdateMovie(UpdateMovieRequest) returns (UpdateMovieResponse);
+    rpc DeleteMovie(DeleteMovieRequest) returns (DeleteMovieResponse);
+}
+
+message GetMoviesRequest {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+message GetMoviesByIdRequest {
+    int32 id = 1;
+}
+
+message GetMovieByIdResponse {
+    int32 id = 1;
+    Movie movie = 2;
+}
+
+
+message GetMoviesResponse {
+    repeated GetMovieByIdResponse movies = 1;
+    int32 total = 2;
+}
+
+message InsertMovieRequest{
+    Movie Movie = 1;
+}
+
+message InsertMovieResponse {
+    int32 id = 1;
+}
+
+message UpdateMovieRequest {
+    int32 id = 1;
+}
+
+message UpdateMovieResponse {
+    int32 id = 1;
+    Movie movie = 2;
+}
+
+message DeleteMovieRequest {
+    int32 id = 1;
+}
+
+message DeleteMovieResponse{
+    int32 id = 1;
+}
+
+message Movie {
+    string title = 1;
+    int32 year = 2;
+    string genre = 3;
+    float rating = 4;
+    string poster_url = 5;
+    string plot = 6;
+    string relase_date = 7;
+    string status = 8;
+    float ticket_price = 9;
+}
+

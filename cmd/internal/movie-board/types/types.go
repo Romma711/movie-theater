@@ -27,3 +27,11 @@ type MovieDTO struct {
 	Status      string
 }
 
+type MovieBoardRepository interface {
+	GetMovies() ([]Movie, error)
+	GetMovieById (id int) (Movie, error)
+	InsertMovie (movie Movie) error
+	UpdateMovie (movie Movie) error
+	DeleteMovie (id int) error
+}
+
