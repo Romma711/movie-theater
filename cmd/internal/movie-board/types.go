@@ -1,4 +1,4 @@
-package main
+package movie_board
 
 import "time"
 

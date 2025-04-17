@@ -17,30 +17,34 @@ message GetMoviesRequest {
     int32 limit = 2;
 }
 
-message GetMoviesByIdRequest {
+message GetMovieByIdRequest {
     int32 id = 1;
-}
-
-message GetMovieByIdResponse {
-    int32 id = 1;
-    Movie movie = 2;
-}
-
-
-message GetMoviesResponse {
-    repeated GetMovieByIdResponse movies = 1;
-    int32 total = 2;
 }
 
 message InsertMovieRequest{
     Movie Movie = 1;
 }
 
-message InsertMovieResponse {
+message UpdateMovieRequest {
     int32 id = 1;
 }
 
-message UpdateMovieRequest {
+message DeleteMovieRequest {
+    int32 id = 1;
+}
+    
+message GetMovieByIdResponse {
+    int32 id = 1;
+    Movie movie = 2;
+}
+
+message GetMoviesResponse {
+    repeated GetMovieByIdResponse movies = 1;
+    int32 total = 2;
+}
+
+
+message InsertMovieResponse {
     int32 id = 1;
 }
 
@@ -49,9 +53,6 @@ message UpdateMovieResponse {
     Movie movie = 2;
 }
 
-message DeleteMovieRequest {
-    int32 id = 1;
-}
 
 message DeleteMovieResponse{
     int32 id = 1;
@@ -68,4 +69,3 @@ message Movie {
     string status = 8;
     float ticket_price = 9;
 }
-

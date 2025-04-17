@@ -1,0 +1,11 @@
+go 1.23.6
+
+use (
+	./api
+	./cmd/api-gateway
+	./cmd/internal/movie-board
+	./cmd/internal/movie-theaters
+	./cmd/internal/payment
+	./cmd/internal/seats
+	./cmd/internal/tickets
+)
