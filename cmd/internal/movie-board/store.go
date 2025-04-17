@@ -1,6 +1,8 @@
 package main
 
-import "database/sql"
+import (
+	"database/sql"
+)
 
 type StoreDB struct {
 	db *sql.DB

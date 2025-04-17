@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package movie_board;
 
-option go_package ="github.com/Romma711/movie_board/api/proto/movie_board";
+option go_package ="github.com/Romma711/movie_theater/api/proto/movie_board_service";
 
 service MovieBoardService {
     rpc GetMovies(GetMoviesRequest) returns (GetMoviesResponse);
